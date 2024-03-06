@@ -81,6 +81,10 @@ h2 {
     position: relative;
     font-weight: 600;
 }
+button:hover {
+    background-color: #FF5A60;
+    opacity: 0.8;
+}
 
 .light {
     opacity: 0.4;
