@@ -2,7 +2,8 @@
  * @jest-environment jsdom
  */
 
-const { game } = require("../game");
+const { beforeAll } = require("jest-circus");
+const { game, newGame } = require("../game");
 
 
 beforeAll(() => {
@@ -26,4 +27,26 @@ describe("game object contains correct keys", () => {
     test("choices key exists", () => {
         expect("choices" in game).toBe(true);
     });
+    test("choices contains current ids", () => {
+        expect(game.choices).toEqual(["button1", "button2", "button3", "button4"]);
+    });
 });
+
+describe("new game works correctly", () => {
+    beforeAll(() => {
+        game.score = 42;
+        game.playerMoves = ["button1", "button2"];
+        game.currentGame = ["button1", "button2"];
+        game.newGame();
+    });
+    test("score is 0", () => {
+        expect(game.score).toBe(0);
+    });
+    test("currentGame is an empty array", () => {
+        expect(game.currentGame).toEqual([]);
+    });
+    test("playerMoves is an empty array", () => {
+        expect(game.playerMoves).toEqual([]);
+    });
+});
+
