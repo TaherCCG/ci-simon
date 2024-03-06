@@ -1,3 +1,4 @@
+
 let game = {
     currentGame: [],
     playerMoves: [],
@@ -7,6 +8,16 @@ let game = {
     lastButton: "",
     turnInProgress: false
 };
+
+
+const soundSources = {
+    sound1: "assets/sounds/retro-video-game-coin-pickup-38299.mp3",
+    sound2: "assets/sounds/negative_beeps-6008.mp3"
+};
+function playSound(sound) {
+    const audio = new Audio(soundSources[sound]);
+    audio.play();
+}
 
 function newGame() {
     game.currentGame = [];
@@ -41,9 +52,10 @@ function showScore() {
 
 function lightsOn(circ) {
     document.getElementById(circ).classList.add("light");
-    setTimeout(() => {
+    playSound('sound1');
+    setTimeout(() => {       
         document.getElementById(circ).classList.remove("light");
-    }, 400);
+    }, 1000);
 };
 
 function showTurns() {
@@ -56,7 +68,7 @@ function showTurns() {
             clearInterval(turns);
             game.turnInProgress = false;
         }
-    }, 800);
+    }, 1000);
 };
 
 function playerTurn() {
@@ -67,10 +79,13 @@ function playerTurn() {
             showScore();
             addTurn();
         }
-    } else {
-        alert("Wrong move!");
-        newGame();
+    }else {
+        playSound("sound2"); 
+        setTimeout(() => {
+            alert("Wrong move!");
+            newGame(); 
+        }, 1000); // Delay of 1000 milliseconds (1 second)
     }
 };
 
-module.exports = { game, newGame, showScore, addTurn, lightsOn, showTurns, playerTurn };
+module.exports = { game, newGame, showScore, addTurn, lightsOn, showTurns, playerTurn, playSound};
