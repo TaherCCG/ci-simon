@@ -2,7 +2,8 @@
  * @jest-environment jsdom
  */
 
-const { game, newGame, showScore, addTurn } = require("../game");
+const { afterEach, beforeEach } = require("jest-circus");
+const { game, newGame, showScore, addTurn, lightsOn } = require("../game");
 
 
 beforeAll(() => {
@@ -50,5 +51,28 @@ describe("newGame works correctly", () => {
     });
     test("should be one move in the computer's game array", () => {
         expect(game.currentGame.length).toBe(1);
+    });
+});
+
+describe("gameplay works correctly", () => {
+    beforeEach(() => {
+        game.score = 0;
+        game.playerMoves = [];
+        game.currentGame = [];
+        addTurn();
+    });
+    afterEach(() => {
+        game.score = 0;
+        game.playerMoves = [];
+        game.currentGame = [];
+    });
+    test("should add a turn to the game", () => {
+        addTurn();
+        expect(game.currentGame.length).toBe(2);
+    });
+    test("should add the correct class to light up the buttons", () => {
+        let button = document.getElementById(game.currentGame[0]);
+        lightsOn(game.currentGame[0]);
+        expect(button.classList).toContain("light");
     });
 });
