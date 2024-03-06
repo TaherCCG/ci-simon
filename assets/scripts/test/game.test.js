@@ -40,14 +40,23 @@ describe("game object contains correct keys", () => {
     test("turnNumber key exists", () => {
         expect("turnNumber" in game).toBe(true);
     });
+    test("lastButton key exists", () => {
+        expect("lastButton" in game).toBe(true);
+    });
+    test("turnInProgress key exists", () => {
+        expect("turnInProgress" in game).toBe(true);
+    });
+    test("turnInProgress is false", () => {
+        expect(game.turnInProgress).toBe(false);
+    });    
 });
 
 describe("newGame works correctly", () => {
     beforeAll(() => {
-        game.score = 42;
+        game.score = 5;
         game.playerMoves = ["button1", "button2"];
         game.currentGame = ["button1", "button2"];
-        document.getElementById("score").innerText = "42";
+        document.getElementById("score").innerText = "5";
         newGame();
     });
     test("expect data-listener to be true", () => {
@@ -109,6 +118,11 @@ describe("gameplay works correctly", () => {
         game.playerMoves.push(game.currentGame[0]);
         playerTurn();
         expect(game.score).toBe(1);
+    });
+    
+    test("should toggle turnInProgress to true during computer sequence", () => {
+        showTurns();
+        expect(game.turnInProgress).toBe(true);
     });
     test("clicking during computer sequence should fail", () => {
         showTurns();
