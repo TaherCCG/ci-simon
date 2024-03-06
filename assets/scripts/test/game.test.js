@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-const { game, newGame, showScore, addTurn, lightsOn, showTurns, playerTurn } = require("../game");
+const { game, newGame, showScore, addTurn, lightsOn, showTurns, playerTurn, playSound } = require("../game");
 jest.spyOn(window, "alert").mockImplementation(() => { });
 
 beforeAll(() => {
@@ -158,15 +158,38 @@ describe("HTML classes and ids", () => {
 
 describe("HTML head", () => {
     test("css is linked", () => {
-        const linkElements = document.querySelectorAll('link');
+        const linkElements = document.querySelectorAll("link");
         // Check if any <link> element has href pointing to style.css
         const cssLinked = Array.from(linkElements).some(link => {
-            const href = link.getAttribute('href');
-            return href && href.includes('style.css');
+            const href = link.getAttribute("href");
+            return href && href.includes("style.css");
         });
         expect(cssLinked).toBe(true);
     });
     test("title is added", () => {
         expect(document.title).toEqual("Jest Simon Game");
     });
+});
+// Got the solution from https://jestjs.io/docs/es6-class-mocks and https://stackoverflow.com/questions/69591847/how-do-i-mock-audio-api-in-jest-properly
+describe("playSound function", () => {
+     // Mock the Audio object and its play method
+     const mockAudioPlay = jest.fn();
+     global.Audio = jest.fn().mockImplementation(() => ({
+         play: mockAudioPlay,
+     }));
+    test("plays sound for sound 1", () => {
+        // Call the function
+        playSound("sound1");
+        // Expectations
+        expect(global.Audio).toHaveBeenCalledWith("assets/sounds/retro-video-game-coin-pickup-38299.mp3");
+        expect(mockAudioPlay).toHaveBeenCalled();
+    });
+    test("plays sound for sound 2", () => {
+        // Call the function
+        playSound("sound2");
+        // Expectations
+        expect(global.Audio).toHaveBeenCalledWith("assets/sounds/negative_beeps-6008.mp3");
+        expect(mockAudioPlay).toHaveBeenCalled();
+    });
+    // Add more tests for other sound identifiers as needed
 });

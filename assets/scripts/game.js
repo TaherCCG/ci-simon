@@ -82,7 +82,7 @@ function playerTurn() {
     }else {
         playSound("sound2"); 
         setTimeout(() => {
-            alert("Wrong move!");
+            alert(`Wrong move! Game over. Your score is ${game.score}.`);
             newGame(); 
         }, 1000); // Delay of 1000 milliseconds (1 second)
     }
