@@ -131,3 +131,42 @@ describe("gameplay works correctly", () => {
         expect(game.lastButton).toEqual("");
     });
 });
+
+describe("HTML classes and ids", () => {
+    test("all circles have the correct class", () => {
+        const elements = document.getElementsByClassName("circle");
+        for (let element of elements) {
+            expect(element.classList).toContain("circle");
+        };
+    });
+    test("all circles have the correct id", () => {
+        const elements = document.getElementsByClassName("circle");
+        for (let element of elements) {
+            expect(element.id).toMatch(/button[1-4]/);
+        };
+    });
+    test("score has the correct id", () => {
+        expect(document.getElementById("score").id).toEqual("score");
+    });
+    test("score has the correct class", () => {
+        expect(document.getElementById("score").classList).toContain("scorebox");
+    });
+    test("score has the correct text", () => {
+        expect(document.getElementById("score").innerHTML).toEqual("0");
+    });
+});
+
+describe("HTML head", () => {
+    test("css is linked", () => {
+        const linkElements = document.querySelectorAll('link');
+        // Check if any <link> element has href pointing to style.css
+        const cssLinked = Array.from(linkElements).some(link => {
+            const href = link.getAttribute('href');
+            return href && href.includes('style.css');
+        });
+        expect(cssLinked).toBe(true);
+    });
+    test("title is added", () => {
+        expect(document.title).toEqual("Jest Simon Game");
+    });
+});
