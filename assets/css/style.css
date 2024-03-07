@@ -3,13 +3,21 @@ body {
 }
 
 h1 {
-    font-weight: 300;
-    margin-bottom: 10px;
+    font-size: 3em;
+    font-weight: 700;
+    text-align: center;
 }
 
 h2 {
-    font-weight: 200;
+    font-weight: 400;
     margin-top: 10px;
+    text-align: center;
+}
+
+span {
+    font-weight: 200;
+    color: #7405f1;
+    font-style: italic;
 }
 
 .container {
@@ -57,7 +65,7 @@ h2 {
     border-radius: 50%;
     box-sizing: border-box;
     position: absolute;
-    background-color: #7918d3;
+    background-color: black;
     height: 100px;
     width: 100px;
     top: 200px;
