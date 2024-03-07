@@ -28,44 +28,45 @@ h2 {
 .circle1 {
     height: 500px;
     width: 500px;
-    background-color: #009FE3;
+    background-color: #0e12e6f5;
 }
 
 .circle2 {
     height: 400px;
     width: 400px;
-    background-color: #445261;
+    background-color: #16e60e;
     top: 50px;
     left: 50px;
 }
 .circle3 {
     height: 300px;
     width: 300px;
-    background-color: #EFB920;
+    background-color: #dfee13;
     top: 100px;
     left: 100px;
 }
 .circle4 {
     height: 200px;
     width: 200px;
-    background-color: #23BBBB;
+    background-color: #d40e0e;
     top: 150px;
     left: 150px;
 }
 
 .scorebox {
-    border-radius: 25%;
+    border-radius: 50%;
     box-sizing: border-box;
     position: absolute;
-    background-color: #E6ECF0;
-    height: 80px;
-    width: 80px;
-    top: 210px;
-    left: 210px;
+    background-color: #7918d3;
+    height: 100px;
+    width: 100px;
+    top: 200px;
+    left: 200px;
     text-align: center;
-    color: #445261;
-    font-size: 3em;
-    padding-top: 10px;
+    font-weight: 900;
+    color: #eceff3;
+    font-size: 2em;
+    padding-top: 30px;
 }
 
 .button {
