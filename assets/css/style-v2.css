@@ -1,0 +1,106 @@
+body {
+    font-family: Montserrat, sans-serif;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: 700;
+    text-align: center;
+}
+
+h2 {
+    font-weight: 400;
+    margin-top: 10px;
+    text-align: center;
+}
+
+span {
+    font-weight: 200;
+    color: #7405f1;
+    font-style: italic;
+}
+
+.container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    margin: auto auto;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
+    border:#000000 10px solid;
+    
+}
+.circle {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    cursor: pointer;
+}
+
+.circle1 {
+    top: 0;
+    left: 0;
+    background:linear-gradient(to bottom right, black 5% , blue 80%);
+  
+}
+.circle2 {
+    top: 0;
+    left: 50%;
+    background:linear-gradient(to bottom left, black 5%, green 80%);
+    border-left:#000000 5px solid;
+    
+}
+.circle3 {
+    background:linear-gradient(to top right, black 5%, yellow 80%);
+    top: 50%;
+    left: 0;
+    border-top:#000000 5px solid;
+}
+.circle4 {
+    background:linear-gradient(to top left, black 5%, red 80%);
+    top: 50%;
+    left: 50%;
+    border:#000000 5px solid;
+}
+
+.scorebox {
+    border-radius: 50%;
+    box-sizing: border-box;
+    position: absolute;
+    background-color: #7918d3;
+    height: 200px;
+    width: 200px;
+    top: 150px;
+    left: 150px;
+    text-align: center;
+    font-weight: 900;
+    color: #eceff3;
+    font-size: 2em;
+    padding-top: 15px;
+    border:#000000 5px solid;
+}
+
+.button {
+    background-color: #000000;
+    color: #FFF;
+    border: 0;
+    height: 100px;
+    width: 200px;
+    border-radius: 0;
+    border-bottom-right-radius: 50% 100%;
+    border-bottom-left-radius: 50% 100%;
+    margin: 0 auto;
+    display: block;
+    top: 250px;
+    position: relative;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+button:hover {
+    color: blueviolet;
+}
+
+.light {
+    opacity: 0.5;
+}
